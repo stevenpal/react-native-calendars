@@ -314,6 +314,8 @@ export default class AgendaView extends Component {
       Object.keys(this.props.items  || {}).forEach(key => {
         if (this.props.items[key] && this.props.items[key].length) {
           markings[key] = {marked: true};
+        } else {
+          markings[key] = {};
         }
       });
     }
