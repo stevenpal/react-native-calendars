@@ -158,9 +158,20 @@ class Calendar extends Component {
     const minDate = parseDate(this.props.minDate);
     const maxDate = parseDate(this.props.maxDate);
     let state = '';
+    let indicator;
+    const current = parseDate(this.props.current);
+    if (current) {
+      const lastMonthOfDay = current.clone().addMonths(1, true).setDate(1).addDays(-1).toString('yyyy-MM-dd');
+      if (this.props.displayLoadingIndicator &&
+          !(this.props.markedDates && this.props.markedDates[lastMonthOfDay])) {
+        indicator = true;
+      }
+    }
     if (this.props.disabledByDefault) {
       state = 'disabled';
     } else if ((minDate && !dateutils.isGTE(day, minDate)) || (maxDate && !dateutils.isLTE(day, maxDate))) {
+      state = 'disabled';
+    } else if (indicator) {
       state = 'disabled';
     } else if (!dateutils.sameMonth(day, this.state.currentMonth)) {
       state = 'disabled';
