@@ -30,7 +30,8 @@ export default function styleConstructor(theme={}) {
       backgroundColor: appStyle.todayBackgroundColor
     },
     todayText: {
-      color: appStyle.todayTextColor
+      color: appStyle.todayTextColor,
+      fontWeight: 'bold',
     },
     selectedText: {
       color: appStyle.selectedDayTextColor
