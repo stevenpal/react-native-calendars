@@ -128,7 +128,8 @@ export default class AgendaView extends Component {
   }
 
   setScrollPadPosition(y, animated) {
-    this.scrollPad._component.scrollTo({x: 0, y, animated});
+    // Support for RN O.61 (Expo 37)
+    this.scrollPad.getNode().scrollTo({x: 0, y, animated});
   }
 
   onScrollPadLayout() {
